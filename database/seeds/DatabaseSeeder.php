@@ -11,6 +11,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        // Creamos usuario manual
+        App\User::create([
+          'name' => 'Alexander Cuestas',
+          'email' => 'alexander.cuestas@hotmail.com',
+          'password' => Hash::make('123456')
+        ]);
+
+        // Creamos ejemplos de CreateEmails
+        factory(App\Email::class, 24)->create();
     }
 }
