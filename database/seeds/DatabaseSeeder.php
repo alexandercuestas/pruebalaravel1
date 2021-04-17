@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         App\User::create([
           'name' => 'Alexander Cuestas',
           'email' => 'alexander.cuestas@hotmail.com',
+          'document' => '1031124745',
           'password' => Hash::make('123456')
         ]);
 
