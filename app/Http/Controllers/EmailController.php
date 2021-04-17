@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Email;
+use App\Mail\SendEmail;
+
 use App\Http\Requests\EmailRequest;
+use Illuminate\Support\Facades\Mail;
 
 class EmailController extends Controller
 {
@@ -37,10 +40,11 @@ class EmailController extends Controller
      */
     public function store(EmailRequest $request)
     {
-        //
         $email = Email::Create([
           'user_id' => auth()->user()->id
         ] + $request->all());
+
+        Mail::to($request->recipient)->send(new SendEmail($email));
 
         return back()->with('status','Email enviado con éxito');
     }
