@@ -23,4 +23,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Accesos con inicio de sesión
 Route::resource('/emails', 'EmailController')->middleware('auth');
+Route::resource('/users', 'UserController')->middleware('auth');
